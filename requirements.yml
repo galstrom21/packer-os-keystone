@@ -1,0 +1,12 @@
+- name: os_keystone
+  src: https://github.com/openstack/openstack-ansible-os_keystone
+  version: origin/master
+- name: apt_package_pinning
+  src: https://github.com/openstack/openstack-ansible-apt_package_pinning.git
+  version: origin/master
+- name: galera_client
+  src: https://github.com/openstack/openstack-ansible-galera_client.git
+  version: origin/master
+- name: plugins
+  src: https://github.com/openstack/openstack-ansible-plugins.git
+  version: origin/master

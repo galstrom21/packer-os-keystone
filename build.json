@@ -1,0 +1,29 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "ubuntu:xenial",
+      "export_path": "keystone.tar",
+      "changes": [
+        "EXPOSE 5000 35357"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "apt-get update",
+        "apt-get install -y python-pip git sudo cron",
+        "pip install ansible"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_dir": "./provisioning",
+      "playbook_file": "./provisioning/main.yml",
+      "galaxy_file": "./requirements.yml",
+      "inventory_groups": "keystone_all"
+    }
+  ]
+}

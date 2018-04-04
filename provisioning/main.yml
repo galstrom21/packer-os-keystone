@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  roles:
+    - role: os_keystone
+  vars:
+      keystone_developer_mode: true
+      internal_lb_vip_address: 198.61.150.50
+      public_lb_vip_address: 198.61.150.50
+      keystone_galera_address: "a814c0cb01ec25cd000083501582ccc9badee967.rackspaceclouddb.com"
+      keystone_galera_user: "keystone"
+      keystone_container_mysql_password: "SuperSecrete"
+      keystone_rabbitmq_password: "secrete"
