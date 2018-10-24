@@ -17,6 +17,7 @@
     #- role: openstack_hosts
     - role: os_keystone
   vars:
+      keystone_git_install_branch: "stable/rocky"
       keystone_developer_mode: true
       internal_lb_vip_address: 198.61.150.50
       public_lb_vip_address: 198.61.150.50
