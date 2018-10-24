@@ -3,7 +3,7 @@
     {
       "type": "lxc",
       "name": "lxc-xenial",
-      "config_file": "/etc/defaults/lxc-net",
+      "config_file": "/etc/default/lxc-net",
       "template_name": "ubuntu",
       "template_environment_vars": [
         "SUITE=xenial"
