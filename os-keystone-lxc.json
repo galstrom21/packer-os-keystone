@@ -1,0 +1,55 @@
+{
+  "builders": [
+    {
+      "type": "lxc",
+      "name": "lxc-xenial",
+      "config_file": "/etc/lxc/default.conf",
+      "template_name": "ubuntu",
+      "template_environment_vars": [
+        "SUITE=xenial"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "ip addr"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "echo \"Acquire::http { Proxy \\\"http://localhost:3142\\\"; }; \" | tee /etc/apt/apt.conf.d/00proxy",
+        "cat /etc/apt/apt.conf.d/00proxy"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "apt-get update",
+        "apt-get install -y python-pip git sudo cron",
+        "pip install ansible==2.5", 
+        "ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N \"\"",
+        "cat /root/.ssh/id_rsa.pub",
+        "cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys",
+        "cat /root/.ssh/authorized_keys"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_dir": "./provisioning",
+      "playbook_file": "./provisioning/main.yml",
+      "galaxy_file": "./requirements.yml",
+      "inventory_groups": "keystone_all",
+      "extra_arguments": [ "-vvvv" ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest.json",
+      "strip_path": true
+    }
+  ]
+}

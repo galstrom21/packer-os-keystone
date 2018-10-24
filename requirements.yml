@@ -10,3 +10,9 @@
 - name: plugins
   src: https://github.com/openstack/openstack-ansible-plugins.git
   version: origin/master
+- name: python_venv_build
+  src: https://github.com/openstack/ansible-role-python_venv_build
+  version: origin/master
+#- name: openstack_hosts
+#  src: https://github.com/openstack/openstack-ansible-openstack_hosts
+#  version: origin/master
