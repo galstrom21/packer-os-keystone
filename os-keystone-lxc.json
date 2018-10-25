@@ -26,7 +26,7 @@
     {
       "type": "shell",
       "inline": [
-        "echo \"Acquire::http { Proxy \\\"http://localhost:3142\\\"; }; \" | tee /etc/apt/apt.conf.d/00proxy",
+        "echo \"Acquire::http { Proxy \\\"http://10.0.3.1:3142\\\"; }; \" | tee /etc/apt/apt.conf.d/00proxy",
         "cat /etc/apt/apt.conf.d/00proxy"
       ]
     },
